@@ -1,6 +1,12 @@
+using pokedex_api.Models;
+using pokedex_api.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<PokedexDatabaseSettings>(builder.Configuration.GetSection("PokedexDatabase"));
+
+builder.Services.AddSingleton<PokemonService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
